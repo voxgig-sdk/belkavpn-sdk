@@ -1,0 +1,34 @@
+{
+  "existing": {
+    "proxy_server": {
+      "PROXY_SERVER00": {
+        "country": "s28",
+        "host": "s29",
+        "port": "s2a",
+        "status": "s2b"
+      },
+      "PROXY_SERVER01": {
+        "country": "s50",
+        "host": "s51",
+        "port": "s52",
+        "status": "s53"
+      },
+      "PROXY_SERVER02": {
+        "country": "s78",
+        "host": "s79",
+        "port": "s7a",
+        "status": "s7b"
+      }
+    }
+  },
+  "new": {
+    "proxy_server": {
+      "proxy_server_ref01": {
+        "country": "sa0",
+        "host": "sa1",
+        "port": "sa2",
+        "status": "sa3"
+      }
+    }
+  }
+}

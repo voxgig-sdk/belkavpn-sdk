@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://github.com/l0v3m0n3y/belkavpn"
+      }
+      description: "The BelkaVPN API allows users to bypass geographical restrictions and website filters, ensuring access to blocked social media platforms while traveling abroad. It provides functionality for retrieving a list of proxy servers and managing connection preferences."
+      servers: [
+        {
+          description: "BelkaVPN API Server"
+          url: "https://api.belkavpn.com"
+        }
+      ]
+      summary: "The BelkaVPN API allows users to bypass geographical restrictions and website filters, ensuring access to blocked social media platforms while traveling abroad."
+      title: "BelkaVPN API"
+      version: "1.0.0"
+      website: "https://github.com/l0v3m0n3y/belkavpn"
+    }
+  }
+}
+

@@ -1,0 +1,52 @@
+# Entity: proxy_server
+
+main: kit: entity: proxy_server: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "host"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "port"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "proxy_server"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/socks"
+          parts: [
+            "socks"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

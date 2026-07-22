@@ -1,0 +1,29 @@
+{
+  "name": "voxgig-sdk/belkavpn",
+  "description": "Unofficial generated PHP SDK for the BelkaVPN public API. Not affiliated with or endorsed by the upstream API provider.",
+  "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "belkavpn"],
+  "homepage": "https://github.com/voxgig-sdk/belkavpn-sdk",
+  "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/belkavpn-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/belkavpn-sdk"
+  },
+  "minimum-stability": "stable",
+  "require": {
+    "php": ">=8.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload": {
+    "files": ["belkavpn_sdk.php"],
+    "classmap": ["core/", "entity/", "feature/", "types/", "utility/", "config.php", "features.php"]
+  },
+  "autoload-dev": {
+    "classmap": ["test/"]
+  }
+}
