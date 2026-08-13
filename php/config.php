@@ -68,6 +68,7 @@ class BelkavpnConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/socks',
                   'parts' => [

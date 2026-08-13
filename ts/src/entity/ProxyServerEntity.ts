@@ -37,7 +37,7 @@ class ProxyServerEntity extends BelkavpnEntityBase<ProxyServer> {
 
 
 
-  async list(this: any, reqmatch?: ProxyServerListMatch, ctrl?: Control): Promise<ProxyServer[]> {
+  async list(this: any, reqmatch?: ProxyServerListMatch, ctrl?: Control): Promise<ProxyServerEntity[]> {
 
     const utility = this._utility
 

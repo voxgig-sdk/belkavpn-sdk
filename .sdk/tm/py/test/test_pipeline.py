@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import BelkavpnSDK
-from core.error import BelkavpnError
-from core.result import BelkavpnResult
-from core.response import BelkavpnResponse
-from core.spec import BelkavpnSpec
-from feature.base_feature import BelkavpnBaseFeature
+from projectname_sdk.core.error import BelkavpnError
+from projectname_sdk.core.result import BelkavpnResult
+from projectname_sdk.core.response import BelkavpnResponse
+from projectname_sdk.core.spec import BelkavpnSpec
+from projectname_sdk.feature.base_feature import BelkavpnBaseFeature
 
 
 def _client():

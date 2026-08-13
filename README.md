@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = BelkavpnSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = BelkavpnSDK.test({
+  entity: {
+    proxy_server: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const proxyservers = await client.ProxyServer().list()
-// proxyservers is an array of bare ProxyServer records populated with mock data
+// proxyservers is an array of ProxyServer entities, populated with mock data
+// — call proxyservers[0].data() for the record itself
 console.log(proxyservers)
 ```
 
@@ -110,7 +119,7 @@ import { BelkavpnSDK } from '@voxgig-sdk/belkavpn'
 
 const client = new BelkavpnSDK()
 
-// List all proxyservers (returns ProxyServer[])
+// List all proxyservers (returns ProxyServerEntity[] — .data() for the record)
 const proxyservers = await client.ProxyServer().list()
 for (const proxyserver of proxyservers) {
   console.log(proxyserver)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/l0v3m0n3y/belkavpn](https://github.com/l0v3m0n3y/belkavpn)
 

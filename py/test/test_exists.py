@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Belkavpn SDK exists test
 
 import pytest
 from belkavpn_sdk import BelkavpnSDK
