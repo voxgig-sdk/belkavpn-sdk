@@ -40,7 +40,7 @@ class BelkavpnSDK
         $utility = new BelkavpnUtility();
         $this->_utility = $utility;
 
-        $config = BelkavpnConfig::make_config();
+        $config = BelkavpnConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

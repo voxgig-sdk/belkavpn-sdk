@@ -28,7 +28,7 @@ class BelkavpnSDK
     utility = BelkavpnUtility.new
     @_utility = utility
 
-    config = BelkavpnConfig.make_config
+    config = BelkavpnConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
