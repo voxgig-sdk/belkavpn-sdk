@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Belkavpn',
+        slug: "belkavpn",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,18 +67,22 @@ class Config {
       "fields": [
         {
           "name": "country",
+          "short": "The country where the proxy server is located",
           "type": "`$STRING`"
         },
         {
           "name": "host",
+          "short": "The hostname or IP address of the proxy server",
           "type": "`$STRING`"
         },
         {
           "name": "port",
+          "short": "The port number of the proxy server",
           "type": "`$INTEGER`"
         },
         {
           "name": "status",
+          "short": "The operational status of the proxy server",
           "type": "`$STRING`"
         }
       ],

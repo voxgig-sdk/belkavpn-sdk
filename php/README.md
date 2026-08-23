@@ -247,10 +247,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `host` |  |
-| `port` |  |
-| `status` |  |
+| `country` | The country where the proxy server is located |
+| `host` | The hostname or IP address of the proxy server |
+| `port` | The port number of the proxy server |
+| `status` | The operational status of the proxy server |
 
 Operations: List.
 
@@ -275,10 +275,10 @@ Create an instance: `$proxy_server = $client->ProxyServer();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `host` | `string` |  |
-| `port` | `int` |  |
-| `status` | `string` |  |
+| `country` | `string` | The country where the proxy server is located |
+| `host` | `string` | The hostname or IP address of the proxy server |
+| `port` | `int` | The port number of the proxy server |
+| `status` | `string` | The operational status of the proxy server |
 
 #### Example: List
 

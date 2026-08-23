@@ -237,10 +237,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `host` |  |
-| `port` |  |
-| `status` |  |
+| `country` | The country where the proxy server is located |
+| `host` | The hostname or IP address of the proxy server |
+| `port` | The port number of the proxy server |
+| `status` | The operational status of the proxy server |
 
 Operations: List.
 
@@ -265,10 +265,10 @@ Create an instance: `proxy_server = client.ProxyServer`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `String` |  |
-| `host` | `String` |  |
-| `port` | `Integer` |  |
-| `status` | `String` |  |
+| `country` | `String` | The country where the proxy server is located |
+| `host` | `String` | The hostname or IP address of the proxy server |
+| `port` | `Integer` | The port number of the proxy server |
+| `status` | `String` | The operational status of the proxy server |
 
 #### Example: List
 

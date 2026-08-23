@@ -231,10 +231,10 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `host` |  |
-| `port` |  |
-| `status` |  |
+| `country` | The country where the proxy server is located |
+| `host` | The hostname or IP address of the proxy server |
+| `port` | The port number of the proxy server |
+| `status` | The operational status of the proxy server |
 
 Operations: List.
 
@@ -259,10 +259,10 @@ Create an instance: `local proxy_server = client:ProxyServer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `host` | `string` |  |
-| `port` | `number` |  |
-| `status` | `string` |  |
+| `country` | `string` | The country where the proxy server is located |
+| `host` | `string` | The hostname or IP address of the proxy server |
+| `port` | `number` | The port number of the proxy server |
+| `status` | `string` | The operational status of the proxy server |
 
 #### Example: List
 

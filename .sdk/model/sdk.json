@@ -36,24 +36,28 @@
               "active": true,
               "name": "country",
               "req": false,
+              "short": "The country where the proxy server is located",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "host",
               "req": false,
+              "short": "The hostname or IP address of the proxy server",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "port",
               "req": false,
+              "short": "The port number of the proxy server",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "The operational status of the proxy server",
               "type": "`$STRING`"
             }
           ],

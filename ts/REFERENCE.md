@@ -116,10 +116,10 @@ const proxy_server = client.ProxyServer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `string` | No |  |
-| `host` | `string` | No |  |
-| `port` | `number` | No |  |
-| `status` | `string` | No |  |
+| `country` | `string` | No | The country where the proxy server is located |
+| `host` | `string` | No | The hostname or IP address of the proxy server |
+| `port` | `number` | No | The port number of the proxy server |
+| `status` | `string` | No | The operational status of the proxy server |
 
 ### Operations
 

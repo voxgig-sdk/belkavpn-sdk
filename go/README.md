@@ -6,7 +6,7 @@ The Golang SDK for the Belkavpn API — an entity-oriented client using standard
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.ProxyServer(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,10 +260,10 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"country"` |  |
-| `"host"` |  |
-| `"port"` |  |
-| `"status"` |  |
+| `"country"` | The country where the proxy server is located |
+| `"host"` | The hostname or IP address of the proxy server |
+| `"port"` | The port number of the proxy server |
+| `"status"` | The operational status of the proxy server |
 
 Operations: List.
 
@@ -288,10 +288,10 @@ Create an instance: `proxyServer := client.ProxyServer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `host` | `string` |  |
-| `port` | `int` |  |
-| `status` | `string` |  |
+| `country` | `string` | The country where the proxy server is located |
+| `host` | `string` | The hostname or IP address of the proxy server |
+| `port` | `int` | The port number of the proxy server |
+| `status` | `string` | The operational status of the proxy server |
 
 #### Example: List
 

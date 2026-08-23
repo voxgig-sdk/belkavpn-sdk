@@ -243,10 +243,10 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `host` |  |
-| `port` |  |
-| `status` |  |
+| `country` | The country where the proxy server is located |
+| `host` | The hostname or IP address of the proxy server |
+| `port` | The port number of the proxy server |
+| `status` | The operational status of the proxy server |
 
 Operations: List.
 
@@ -271,10 +271,10 @@ Create an instance: `proxy_server = client.ProxyServer()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `str` |  |
-| `host` | `str` |  |
-| `port` | `int` |  |
-| `status` | `str` |  |
+| `country` | `str` | The country where the proxy server is located |
+| `host` | `str` | The hostname or IP address of the proxy server |
+| `port` | `int` | The port number of the proxy server |
+| `status` | `str` | The operational status of the proxy server |
 
 #### Example: List
 

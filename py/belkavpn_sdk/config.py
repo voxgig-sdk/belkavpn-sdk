@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Belkavpn",
+            "slug": "belkavpn",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -50,18 +53,22 @@ def make_config():
         "fields": [
           {
             "name": "country",
+            "short": "The country where the proxy server is located",
             "type": "`$STRING`",
           },
           {
             "name": "host",
+            "short": "The hostname or IP address of the proxy server",
             "type": "`$STRING`",
           },
           {
             "name": "port",
+            "short": "The port number of the proxy server",
             "type": "`$INTEGER`",
           },
           {
             "name": "status",
+            "short": "The operational status of the proxy server",
             "type": "`$STRING`",
           },
         ],

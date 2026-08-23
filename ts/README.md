@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,10 +287,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `country` |  |
-| `host` |  |
-| `port` |  |
-| `status` |  |
+| `country` | The country where the proxy server is located |
+| `host` | The hostname or IP address of the proxy server |
+| `port` | The port number of the proxy server |
+| `status` | The operational status of the proxy server |
 
 Operations: list.
 
@@ -315,10 +315,10 @@ Create an instance: `const proxy_server = client.ProxyServer()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `country` | `string` |  |
-| `host` | `string` |  |
-| `port` | `number` |  |
-| `status` | `string` |  |
+| `country` | `string` | The country where the proxy server is located |
+| `host` | `string` | The hostname or IP address of the proxy server |
+| `port` | `number` | The port number of the proxy server |
+| `status` | `string` | The operational status of the proxy server |
 
 #### Example: List
 

@@ -8,21 +8,25 @@ main: kit: entity: proxy_server: {
     {
       name: "country"
       req: false
+      short: "The country where the proxy server is located"
       type: "`$STRING`"
     }
     {
       name: "host"
       req: false
+      short: "The hostname or IP address of the proxy server"
       type: "`$STRING`"
     }
     {
       name: "port"
       req: false
+      short: "The port number of the proxy server"
       type: "`$INTEGER`"
     }
     {
       name: "status"
       req: false
+      short: "The operational status of the proxy server"
       type: "`$STRING`"
     }
   ]

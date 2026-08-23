@@ -87,10 +87,10 @@ proxy_server = client.ProxyServer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `country` | `str` | No |  |
-| `host` | `str` | No |  |
-| `port` | `int` | No |  |
-| `status` | `str` | No |  |
+| `country` | `str` | No | The country where the proxy server is located |
+| `host` | `str` | No | The hostname or IP address of the proxy server |
+| `port` | `int` | No | The port number of the proxy server |
+| `status` | `str` | No | The operational status of the proxy server |
 
 ### Operations
 
