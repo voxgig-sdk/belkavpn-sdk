@@ -28,6 +28,7 @@ module BelkavpnConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
