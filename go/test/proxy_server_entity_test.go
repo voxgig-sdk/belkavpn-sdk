@@ -98,7 +98,7 @@ func TestProxyServerEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		proxyServerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.proxy_server", setup.data)))
+		proxyServerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.proxy_server")))
 		var proxyServerRef01Data map[string]any
 		if len(proxyServerRef01DataRaw) > 0 {
 			proxyServerRef01Data = core.ToMapAny(proxyServerRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func proxy_serverBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"proxy_server01", "proxy_server02", "proxy_server03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -175,10 +175,22 @@ func proxy_serverBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["BELKAVPN_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewBelkavpnSDK(core.ToMapAny(mergedOpts))
 	}

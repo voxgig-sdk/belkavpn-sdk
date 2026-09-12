@@ -39,8 +39,10 @@ main: kit: entity: proxy_server: {
         {
           method: "GET"
           orig: "/socks"
-          parts: [
-            "socks"
+          segments: [
+            {
+              lit: "socks"
+            }
           ]
           transform: {
             req: "`reqdata`"

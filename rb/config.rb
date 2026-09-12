@@ -75,14 +75,19 @@ module BelkavpnConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/socks",
-                  "parts" => [
-                    "socks",
+                  "segments" => [
+                    {
+                      "lit" => "socks",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "socks",
+                  ],
                 },
               ],
             },
