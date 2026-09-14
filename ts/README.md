@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { BelkavpnSDK } from '@voxgig-sdk/belkavpn'
+import { BelkavpnSDK } from '@voxgig-sdk/belkavpn-sdk'
 
 const client = new BelkavpnSDK()
 ```
@@ -409,7 +409,7 @@ belkavpn/
 Import the SDK from the package root:
 
 ```ts
-import { BelkavpnSDK } from '@voxgig-sdk/belkavpn'
+import { BelkavpnSDK } from '@voxgig-sdk/belkavpn-sdk'
 ```
 
 ### Entity state

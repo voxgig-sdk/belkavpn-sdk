@@ -105,7 +105,7 @@ local results, err = client:ProxyServer():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
+| TypeScript | `@voxgig-sdk/belkavpn-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
 | Python | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
 | PHP | `voxgig-sdk/belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/belkavpn-sdk/go` | `go get github.com/voxgig-sdk/belkavpn-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:ProxyServer():list()
 ### TypeScript
 
 ```ts
-import { BelkavpnSDK } from '@voxgig-sdk/belkavpn'
+import { BelkavpnSDK } from '@voxgig-sdk/belkavpn-sdk'
 
 const client = new BelkavpnSDK()
 
