@@ -4,19 +4,19 @@
       "PROXY_SERVER00": {
         "country": "s28",
         "host": "s29",
-        "port": "s2a",
+        "port": 42,
         "status": "s2b"
       },
       "PROXY_SERVER01": {
         "country": "s50",
         "host": "s51",
-        "port": "s52",
+        "port": 82,
         "status": "s53"
       },
       "PROXY_SERVER02": {
         "country": "s78",
         "host": "s79",
-        "port": "s7a",
+        "port": 122,
         "status": "s7b"
       }
     }
@@ -26,8 +26,114 @@
       "proxy_server_ref01": {
         "country": "sa0",
         "host": "sa1",
-        "port": "sa2",
+        "port": 162,
         "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /socks": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getSocks5List",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "proxyList": {
+                    "summary": "Example proxy server list",
+                    "value": [
+                      {
+                        "country": "US",
+                        "host": "proxy1.belkavpn.com",
+                        "port": 1080,
+                        "status": "active"
+                      },
+                      {
+                        "country": "UK",
+                        "host": "proxy2.belkavpn.com",
+                        "port": 1080,
+                        "status": "active"
+                      }
+                    ]
+                  }
+                },
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "country": {
+                        "description": "The country where the proxy server is located",
+                        "example": "US",
+                        "type": "string"
+                      },
+                      "host": {
+                        "description": "The hostname or IP address of the proxy server",
+                        "example": "proxy1.belkavpn.com",
+                        "type": "string"
+                      },
+                      "port": {
+                        "description": "The port number of the proxy server",
+                        "example": 1080,
+                        "type": "integer"
+                      },
+                      "status": {
+                        "description": "The operational status of the proxy server",
+                        "enum": [
+                          "active",
+                          "inactive",
+                          "maintenance"
+                        ],
+                        "example": "active",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successfully retrieved the list of SOCKS5 proxy servers"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message describing what went wrong",
+                      "example": "Failed to retrieve proxy server list",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message indicating service unavailability",
+                      "example": "Service temporarily unavailable",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Service unavailable"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

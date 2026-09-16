@@ -1,12 +1,18 @@
 # Belkavpn SDK feature factory
 
 from belkavpn_sdk.feature.base_feature import BelkavpnBaseFeature
+from belkavpn_sdk.feature.ratelimit_feature import BelkavpnRatelimitFeature
+from belkavpn_sdk.feature.retry_feature import BelkavpnRetryFeature
 from belkavpn_sdk.feature.test_feature import BelkavpnTestFeature
+from belkavpn_sdk.feature.timeout_feature import BelkavpnTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: BelkavpnBaseFeature(),
+    "ratelimit": lambda: BelkavpnRatelimitFeature(),
+    "retry": lambda: BelkavpnRetryFeature(),
     "test": lambda: BelkavpnTestFeature(),
+    "timeout": lambda: BelkavpnTimeoutFeature(),
 }
 
 

@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Belkavpn SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class BelkavpnFeatures
@@ -14,8 +17,14 @@ class BelkavpnFeatures
         switch ($name) {
             case "base":
                 return new BelkavpnBaseFeature();
+            case "ratelimit":
+                return new BelkavpnRatelimitFeature();
+            case "retry":
+                return new BelkavpnRetryFeature();
             case "test":
                 return new BelkavpnTestFeature();
+            case "timeout":
+                return new BelkavpnTimeoutFeature();
             default:
                 return new BelkavpnBaseFeature();
         }
@@ -31,7 +40,10 @@ class BelkavpnFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

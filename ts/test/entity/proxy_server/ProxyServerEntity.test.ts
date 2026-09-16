@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { BelkavpnSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('ProxyServerEntity', async () => {
 
     const live = 'TRUE' === process.env.BELKAVPN_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'proxy_server.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'proxy_server.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set BELKAVPN_TEST_PROXY_SERVER_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"country","req":false,"short":"The country where the proxy server is located","type":"`$STRING`","index$":0},{"active":true,"name":"host","req":false,"short":"The hostname or IP address of the proxy server","type":"`$STRING`","index$":1},{"active":true,"name":"port","req":false,"short":"The port number of the proxy server","type":"`$INTEGER`","index$":2},{"active":true,"name":"status","req":false,"short":"The operational status of the proxy server","type":"`$STRING`","index$":3}],"name":"proxy_server","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /socks","json":"{\"operationId\":\"getSocks5List\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"proxyList\":{\"summary\":\"Example proxy server list\",\"value\":[{\"country\":\"US\",\"host\":\"proxy1.belkavpn.com\",\"port\":1080,\"status\":\"active\"},{\"country\":\"UK\",\"host\":\"proxy2.belkavpn.com\",\"port\":1080,\"status\":\"active\"}]}},\"schema\":{\"items\":{\"properties\":{\"country\":{\"description\":\"The country where the proxy server is located\",\"example\":\"US\",\"type\":\"string\"},\"host\":{\"description\":\"The hostname or IP address of the proxy server\",\"example\":\"proxy1.belkavpn.com\",\"type\":\"string\"},\"port\":{\"description\":\"The port number of the proxy server\",\"example\":1080,\"type\":\"integer\"},\"status\":{\"description\":\"The operational status of the proxy server\",\"enum\":[\"active\",\"inactive\",\"maintenance\"],\"example\":\"active\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successfully retrieved the list of SOCKS5 proxy servers\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"example\":\"Failed to retrieve proxy server list\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"},\"503\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message indicating service unavailability\",\"example\":\"Service temporarily unavailable\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Service unavailable\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/socks","segments":[{"lit":"socks"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"proxy_server","name__orig":"proxy_server","Name":"ProxyServer","name_":"proxy_server","name-":"proxy-server","NAME":"PROXY_SERVER","index$":0}, {"active":true,"entity":"proxy_server","key$":"BasicProxyServerFlow","kind":"basic","name":"BasicProxyServerFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"proxy_server_ref01"}}],"index$":0}]}, 'ProxyServer')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['BELKAVPN_TEST_PROXY_SERVER_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'BELKAVPN_TEST_PROXY_SERVER_ENTID': idmap,
     'BELKAVPN_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.BELKAVPN_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['BELKAVPN_TEST_PROXY_SERVER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new BelkavpnSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.BELKAVPN_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
