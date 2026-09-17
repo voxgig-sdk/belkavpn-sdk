@@ -105,12 +105,12 @@ local results, err = client:ProxyServer():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/belkavpn-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
-| Python | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
-| PHP | `voxgig-sdk/belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
+| TypeScript | `@voxgig-sdk/belkavpn-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/tags) |
+| Python | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/tags) |
+| PHP | `voxgig-sdk/belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/belkavpn-sdk/go` | `go get github.com/voxgig-sdk/belkavpn-sdk/go@latest` |
-| Ruby | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
-| Lua | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/releases) |
+| Ruby | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/tags) |
+| Lua | `voxgig-sdk-belkavpn` | publish pending — [install from git tag](https://github.com/voxgig-sdk/belkavpn-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/belkavpn-sdk/go-cli` | `go install github.com/voxgig-sdk/belkavpn-sdk/go-cli/cmd/belkavpn@latest` |
 | Go MCP server | `github.com/voxgig-sdk/belkavpn-sdk/go-mcp` | `go get github.com/voxgig-sdk/belkavpn-sdk/go-mcp@latest` |
 
